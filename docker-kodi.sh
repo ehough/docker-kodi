@@ -78,7 +78,7 @@ _positionals=()
 _arg_x11docker_argument=()
 # THE DEFAULTS INITIALIZATION - OPTIONALS
 _arg_action="start"
-_arg_image="ehough/kodi:alsa"
+_arg_image="erichough/kodi:alsa"
 _arg_verbose=0
 
 # Function that prints general usage of the script.
@@ -89,7 +89,7 @@ argbash_print_help () {
   printf 'Usage: %s [-a|--action <arg>] [-i|--image <arg>] [-h|--help] [-v|--verbose] [--] [<x11docker-argument-1>] ... [<x11docker-argument-n>] ...\n' "$0"
   printf '\t%s\n' "<x11docker-argument>: arguments to pass to x11docker"
   printf '\t%s\n' "-a,--action: action to perform (start, stop, or status (default: 'start')"
-  printf '\t%s\n' "-i,--image: image name or identifier to execute (default: 'ehough/kodi:alsa')"
+  printf '\t%s\n' "-i,--image: image name or identifier to execute (default: 'erichough/kodi:alsa')"
   printf '\t%s\n' "-h,--help: Prints help"
   printf '\t%s\n' "-v,--verbose: Set verbose output (can be specified multiple times to increase the effect)"
 }

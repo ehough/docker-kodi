@@ -63,7 +63,7 @@ Installation is easy.
     Usage: docker-kodi.sh [-a|--action <arg>] [-i|--image <arg>] [-h|--help] [-v|--verbose] [--] [<x11docker-argument-1>] ... [<x11docker-argument-n>] ...
         <x11docker-argument>: arguments to pass to x11docker
         -a,--action: action to perform (start, stop, or status (default: 'start')
-        -i,--image: image name or identifier to execute (default: 'ehough/kodi:alsa')
+        -i,--image: image name or identifier to execute (default: 'erichough/kodi:alsa')
         -h,--help: Prints help
         -v,--verbose: Set verbose output (can be specified multiple times to increase the effect)
 
@@ -74,7 +74,7 @@ This gives you tremendous flexibility in configuring your environment.
 
 e.g. for ALSA sound, no window manager, a new Xorg X server on virtual terminal 7, hardware video acceleration, a persistent Kodi home directory, and a shared read-only Docker volume for Kodi media:
 
-    $ /path/to/docker-kodi.sh --image ehough/kodi:alsa          \
+    $ /path/to/docker-kodi.sh --image erichough/kodi:alsa       \
                               --                                \
                               --wm none                         \
                               --xorg                            \
@@ -98,14 +98,14 @@ Under the hood, this will call `docker stop` on the Kodi container, which allows
 ## Image Tags
 
 * ALSA sound, Kodi Krypton
-  * `ehough/kodi:latest`
-  * `ehough/kodi:alsa`
-  * `ehough/kodi:alsa-krypton`
-  * `ehough/kodi:alsa-latest`
+  * `erichough/kodi:latest`
+  * `erichough/kodi:alsa`
+  * `erichough/kodi:alsa-krypton`
+  * `erichough/kodi:alsa-latest`
 * PulseAudio sound, Kodi Krypton
-  * `ehough/kodi:pulseaudio`
-  * `ehough/kodi:pulseaudio-krypton`
-  * `ehough/kodi:pulseaudio-latest`
+  * `erichough/kodi:pulseaudio`
+  * `erichough/kodi:pulseaudio-krypton`
+  * `erichough/kodi:pulseaudio-latest`
 
 ## Contributing
 

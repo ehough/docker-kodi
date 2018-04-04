@@ -21,7 +21,7 @@
 #
 ##########################################################################
 
-FROM ehough/kodi-base:krypton
+FROM erichough/kodi:base-krypton
 
 # install ALSA
 RUN apt-get update                                        && \
