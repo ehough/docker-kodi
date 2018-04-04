@@ -30,21 +30,21 @@ The Docker **host** will need the following:
 
    If you're looking for a headless Kodi installation, look elsewhere!
    
-## Installation
+## Host Installation
 
-Installation is easy.
+You will need to ensure that the following items are available on the Docker host:
    
-1. **Install [x11docker](https://github.com/mviereck/x11docker/)**
+1. **[X](https://www.x.org/) or [Wayland](https://wayland.freedesktop.org/)**
+
+   Ensure that the packages for an X or Wayland server are present. Please consult your OS's documentation if you're not sure what to install. A display server does *not* need to be running ahead of time.
+
+1. **[x11docker](https://github.com/mviereck/x11docker/)**
 
    `x11docker` allows Docker-based applications to utilize X and/or Wayland. Please follow the `x11docker` [installation instructions](https://github.com/mviereck/x11docker#installation) and ensure that you have a [working setup](https://github.com/mviereck/x11docker#examples).
    
-1. **Install [X](https://www.x.org/) or [Wayland](https://wayland.freedesktop.org/)**
-
-   Ensure that the packages for an X or Wayland server are installed. Please consult your OS's documentation if you're not sure what to install. A display server does *not* need to be running ahead of time.
+1. **[`docker-kodi.sh`](https://github.com/ehough/docker-kodi/blob/master/docker-kodi.sh)**
    
-1. **Install `docker-kodi.sh`**
-   
-   The Docker host will need a copy of [`docker-kodi.sh`](https://github.com/ehough/docker-kodi/blob/master/docker-kodi.sh) from this repository. There are (at least) two ways
+   This required Bash script allows you to cleanly start and stop the container running Kodi. There are (at least) two ways
    to download and install this script:
    
    * If you have Git, you can clone this repo anywhere on your host:
@@ -58,7 +58,7 @@ Installation is easy.
        
 ## Usage
 
-`docker-kodi.sh` is the script that you will use to cleanly start and stop Kodi. It's a wrapper around `x11docker` and the Docker CLI.
+`docker-kodi.sh` is a wrapper around `x11docker` and the Docker CLI. It allows you to cleanly start and stop the container that runs Kodi.
 
     Usage: docker-kodi.sh [-a|--action <arg>] [-i|--image <arg>] [-h|--help] [-v|--verbose] [--] [<x11docker-argument-1>] ... [<x11docker-argument-n>] ...
         <x11docker-argument>: arguments to pass to x11docker
