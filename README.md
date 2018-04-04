@@ -44,7 +44,7 @@ You will need to ensure that the following items are available on the Docker hos
    
 1. **[`docker-kodi.sh`](https://github.com/ehough/docker-kodi/blob/master/docker-kodi.sh)**
    
-   This required Bash script allows you to cleanly start and stop the container running Kodi. There are (at least) two ways
+   This required Bash script allows you to cleanly start and stop the Kodi container. There are (at least) two ways
    to download and install this script:
    
    * If you have Git, you can clone this repo anywhere on your host:
@@ -58,7 +58,7 @@ You will need to ensure that the following items are available on the Docker hos
        
 ## Usage
 
-`docker-kodi.sh` is a wrapper around `x11docker` and the Docker CLI. It allows you to cleanly start and stop the container that runs Kodi.
+`docker-kodi.sh` is a wrapper around `x11docker` and the Docker CLI. It allows you to cleanly start and stop the Kodi container.
 
     Usage: docker-kodi.sh [-a|--action <arg>] [-i|--image <arg>] [-h|--help] [-v|--verbose] [--] [<x11docker-argument-1>] ... [<x11docker-argument-n>] ...
         <x11docker-argument>: arguments to pass to x11docker
@@ -89,11 +89,7 @@ Detailing the myriad of `x11docker` options is beyond the scope of this document
 
 ### Stopping Kodi
 
-Either `Ctrl-C` the running `docker-kodi.sh` process or call:
-
-    $ docker-kodi.sh --action stop
-
-Under the hood, this will call `docker stop` on the Kodi container, which allows Kodi to shut itself down properly.
+Kill the running `docker-kodi.sh` process. Under the hood, this will call `docker stop` on the Kodi container, which allows Kodi to shut itself down properly.
 
 ## Image Tags
 
