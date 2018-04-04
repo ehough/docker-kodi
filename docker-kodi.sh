@@ -259,7 +259,6 @@ ensure_executable () {
 
 find_running_container_id () {
 
-  log "asking Docker for a running Kodi container"
   docker ps --filter "name=x11docker_" --filter "name=kodi" --filter "status=running" -q --last 1
   bail_on_failure "unable to query Docker for Kodi container status"
 }
@@ -305,7 +304,7 @@ start_kodi () {
   log "will now execute: $command"
 
   # this is where x11docker will take over
-  "$command"
+  $command
 
   # x11docker finished
   warn_on_failure "command did not exit cleanly: $command"
