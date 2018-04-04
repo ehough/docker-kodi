@@ -58,7 +58,7 @@ Installation is easy.
        
 ## Usage
 
-`docker-kodi.sh` is the script that you will use to cleanly start and stop Kodi. It's a simple wrapper around `x11docker` and the Docker CLI.
+`docker-kodi.sh` is the script that you will use to cleanly start and stop Kodi. It's a wrapper around `x11docker` and the Docker CLI.
 
     Usage: docker-kodi.sh [-a|--action <arg>] [-i|--image <arg>] [-h|--help] [-v|--verbose] [--] [<x11docker-argument-1>] ... [<x11docker-argument-n>] ...
         <x11docker-argument>: arguments to pass to x11docker
@@ -79,7 +79,7 @@ e.g. for ALSA sound, no window manager, a new Xorg X server on virtual terminal 
                               --wm none                         \
                               --xorg                            \
                               --gpu                             \
-                              --alsa						    \
+                              --alsa                            \
                               --homedir /host/path/to/kodi/home \
                               --vt 7                            \
                               --                                \
