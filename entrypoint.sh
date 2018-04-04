@@ -33,7 +33,7 @@
 
 readonly ENV_VAR_KODI_COMMAND="KODI_COMMAND"
 readonly ENV_VAR_KODI_QUIT_TIMEOUT="KODI_QUIT_TIMEOUT"
-readonly AUDIO_PACKAGE_NAME=""
+readonly AUDIO_PACKAGE_NAME="libasound2"
 
 log () {
 

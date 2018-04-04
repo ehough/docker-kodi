@@ -39,3 +39,9 @@ ADD entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+# install ALSA
+RUN apt-get update                                        && \
+    apt-get install -y --no-install-recommends libasound2 && \
+    apt-get -y --purge autoremove                         && \
+    rm -rf /var/lib/apt/lists/*
