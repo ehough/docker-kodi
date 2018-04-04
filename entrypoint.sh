@@ -83,7 +83,7 @@ start_kodi () {
   local -r command="${!ENV_VAR_KODI_COMMAND:-kodi-standalone}"
 
   # ensure we have a sound package
-  if ! $(dpkg -s ${AUDIO_PACKAGE_NAME} &> /dev/null); then
+  if ! dpkg -s ${AUDIO_PACKAGE_NAME} &> /dev/null; then
     die "FATAL ERROR: the ${AUDIO_PACKAGE_NAME} package is required to run Kodi" 1
   fi
 
