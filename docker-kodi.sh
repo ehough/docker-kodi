@@ -1,7 +1,5 @@
 #!/bin/bash
 
-##########################################################################
-#
 # ehough/docker-kodi - Kodi in a Docker container
 #
 # https://github.com/ehough/docker-kodi
@@ -20,16 +18,13 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#
-##########################################################################
 
 
-##########################################################################
-# This script runs on the Docker host, and is a wrapper around the Docker
-# CLI and x11docker. Its primary purpose is to provide a means to cleanly
-# stop the running Kodi container, which will in turn stop the parent
-# x11docker process.
-##########################################################################
+###########################################################################################################
+# This script runs on the Docker host, and is a wrapper around the Docker CLI and x11docker. Its primary
+# purpose is to provide a means to cleanly stop the running Kodi container, which will in turn stop the
+# parent x11docker process.
+###########################################################################################################
 
 
 ###########################################################################################################

@@ -12,9 +12,9 @@ This project is in an early stage of development, but has been operating on the 
 
 ## Features
 
-* video and audio via [x11docker](https://github.com/mviereck/x11docker/)
-* optional hardware video acceleration
-* sound via ALSA or PulseAudio
+* audio and video via [x11docker](https://github.com/mviereck/x11docker/)
+* optional OpenGL hardware video acceleration
+* sound via [ALSA or PulseAudio](https://kodi.wiki/view/Linux_audio)
 * simple, Ubuntu-based image that adheres to the [official Kodi installation instructions](https://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux#Installing_Kodi_on_Ubuntu-based_distributions)
 * clean shutdown of Kodi when its container is terminated
 
@@ -26,7 +26,9 @@ The Docker **host** will need the following:
 
    Though not extensively tested yet, this project should work on any Linux distribution. Windows support is not yet implemented.
    
-1. **A connected display & speakers**
+1. **A connected display and speaker(s)**
+
+   If you're looking for a headless Kodi installation, look elsewhere!
    
 ## Installation
 
@@ -40,11 +42,19 @@ Installation is easy.
 
    Ensure that the packages for an X or Wayland server are installed. Please consult your OS's documentation if you're not sure what to install. A display server does *not* need to be running ahead of time.
    
-1. **Clone this repo to your Docker host**
+1. **Install `docker-kodi.sh`**
    
-       $ git clone https://github.com/ehough/docker-kodi
+   The Docker host will need a copy of [`docker-kodi.sh`](https://github.com/ehough/docker-kodi/blob/master/docker-kodi.sh) from this repository. There are (at least) two ways
+   to download and install this script:
+   
+   * If you have Git, you can clone this repo anywhere on your host:
+   
+         $ git clone https://github.com/ehough/docker-kodi
        
-   The exact location of your clone doesn't matter.
+   * Alternatively, you can download the script directly and make sure that it's executable:
+   
+         $ wget https://raw.githubusercontent.com/ehough/docker-kodi/master/docker-kodi.sh
+         $ chmod +x docker-kodi.sh
        
 ## Usage
 
@@ -59,7 +69,7 @@ Installation is easy.
 
 ### Starting Kodi
 
-To start Kodi, invoke `docker-kodi.sh` with your desired image variant (`ehough/kodi:alsa` or `ehough/kodi:pulseaudio`) and arguments to `x11docker`. Arguments following the first `--` delimeter (if present) are passed directly to `x11docker`.
+To start Kodi, invoke `docker-kodi.sh` with your desired [image](#image-tags) and arguments to `x11docker`. Arguments following the first `--` delimeter (if present) are passed directly to `x11docker`.
 This gives you tremendous flexibility in configuring your environment.
 
 e.g. for ALSA sound, no window manager, a new Xorg X server on virtual terminal 7, hardware video acceleration, a persistent Kodi home directory, and a shared read-only Docker volume for Kodi media:
@@ -69,10 +79,10 @@ e.g. for ALSA sound, no window manager, a new Xorg X server on virtual terminal 
                               --wm none                         \
                               --xorg                            \
                               --gpu                             \
-                              --alsa							\
+                              --alsa						    \
                               --homedir /host/path/to/kodi/home \
-                              --vt 7							\
-                              --								\
+                              --vt 7                            \
+                              --                                \
                               -v /host/path/to/media:/media:ro
                             
 Detailing the myriad of `x11docker` options is beyond the scope of this document. Please consult the [`x11docker` documentation](https://github.com/mviereck/x11docker/) to find the set of options that work for your system.
@@ -84,6 +94,18 @@ Either `Ctrl-C` the running `docker-kodi.sh` process or call:
     $ docker-kodi.sh --action stop
 
 Under the hood, this will call `docker stop` on the Kodi container, which allows Kodi to shut itself down properly.
+
+## Image Tags
+
+* ALSA sound, Kodi Krypton
+  * `ehough/kodi:latest`
+  * `ehough/kodi:alsa`
+  * `ehough/kodi:alsa-krypton`
+  * `ehough/kodi:alsa-latest`
+* PulseAudio sound, Kodi Krypton
+  * `ehough/kodi:pulseaudio`
+  * `ehough/kodi:pulseaudio-krypton`
+  * `ehough/kodi:pulseaudio-latest`
 
 ## Contributing
 

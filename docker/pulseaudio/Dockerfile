@@ -21,7 +21,7 @@
 #
 ##########################################################################
 
-FROM ehough/kodi:xenial
+FROM ehough/kodi-base:krypton
 
 # install PulseAudio
 RUN apt-get update                                        && \
