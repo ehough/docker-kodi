@@ -43,9 +43,9 @@ log () {
 
 get_sound_package () {
 
-  for package in libasound2, pulseaudio; do
+  for package in libasound2 pulseaudio; do
 
-    if [[ "$(dpkg -L $package) 2&> /dev/null)" -eq 0 ]]; then
+    if [[ "$(dpkg -s $package 2&> /dev/null)" -eq 0 ]]; then
       echo "$package"
       break
     fi
