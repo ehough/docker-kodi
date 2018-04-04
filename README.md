@@ -42,21 +42,22 @@ Use `x11docker` to start your desired [Kodi image](#image-tags). Detailing the m
 
 Below is an example command (split into multiple lines for clarity) that starts Kodi on a fresh X.Org X server on virtual terminal 7, with ALSA sound, no window manager, hardware video acceleration, a persistent Kodi home directory, and a shared read-only Docker volume for media files:
 
-    $ x11docker --xorg                            \
-                --vt 7                            \
-                --alsa                            \
-                --wm none                         \                
-                --gpu                             \
-                --homedir /host/path/to/kodi/home \
-                --                                \
-                -v /host/path/to/media:/media:ro  \
+    $ x11docker --xorg                                \
+                --vt 7                                \
+                --alsa                                \
+                --wm none                             \                
+                --gpu                                 \
+                --homedir /host/path/to/kodi/home     \
+                -- "-v /host/path/to/media:/media:ro" \
                 erichough/kodi:alsa
-                            
+           
+Please note that the argument passed after `--`, which contains additional arguments to `docker run`, needs to be enclosed in quotes.
+           
 By default, the container's entry point will call `kodi-standalone` to start Kodi, which should work well for most installations. If you would like to customize this command, you can utilize the environment variable `KODI_COMMAND`.
 This provides the capability to call additional scripts or processes before starting Kodi. For example, to reduce
 the priority of the Kodi process:
 
-    $ x11docker ... -- --cap-add SYS_NICE --env KODI_COMMAND="nice kodi-standalone" erichough/kodi
+    $ x11docker ... -- '--cap-add SYS_NICE --env KODI_COMMAND="nice kodi-standalone"' erichough/kodi
 
 ### Stopping Kodi
 
@@ -76,7 +77,21 @@ Either method will allow Kodi to shut down gracefully, waiting for up to 60 seco
 like to customize the timeout, you can utilize the environment variable `KODI_QUIT_TIMEOUT`. For example, to wait
 120 seconds before timing out:
 
-    $ x11docker ... -- --env KODI_QUIT_TIMEOUT=120 erichough/kodi
+    $ x11docker ... -- '--env KODI_QUIT_TIMEOUT=120' erichough/kodi
+
+### Example systemd Service Unit
+
+    [Unit]
+    Description=Dockerized Kodi
+    Requires=docker.service
+    After=network.target docker.service
+    
+    [Service]
+    ExecStart=/usr/bin/x11docker ... erichough/kodi
+    Restart=always
+    
+    [Install]
+    WantedBy=multi-user.target
 
 ## Image Tags
 
