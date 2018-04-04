@@ -19,78 +19,72 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
-##########################################################################
-# This script is the entrypoint for the Kodi container and has two jobs:
+#############################################################################
+# This script is the entry point for the Kodi container and it has two jobs:
 #
 # 1. start Kodi by calling kodi-standalone (configurable via environment
 #    variable KODI_COMMAND).
 #
-# 2. cleanly stop Kodi when the container terminates, waiting up to 10
+# 2. cleanly stop Kodi when the container terminates, waiting up to 60
 #    seconds (configurable via environment variable KODI_QUIT_TIMEOUT)
 #    before itself exiting.
 #
-##########################################################################
-
+#############################################################################
 
 readonly ENV_VAR_KODI_COMMAND="KODI_COMMAND"
 readonly ENV_VAR_KODI_QUIT_TIMEOUT="KODI_QUIT_TIMEOUT"
+readonly AUDIO_PACKAGE_NAME=""
 
 log () {
 
   echo "---> $1"
 }
 
-get_sound_package () {
+die () {
 
-  for package in libasound2 pulseaudio; do
+  log "$1"
+  exit "$2"
+}
 
-    if [[ "$(dpkg -s $package 2&> /dev/null)" -eq 0 ]]; then
-      echo "$package"
-      break
-    fi
-  done
+get_kodi_pid () {
+
+  pidof kodi.bin
 }
 
 stop_kodi () {
 
-  if [[ -z $(pidof kodi.bin) ]]; then
-    log "Kodi did not appear to be running"
-    exit 0
+  if [[ -z $(get_kodi_pid) ]]; then
+    die "Kodi does not appear to be running. Exiting." 0
   fi
 
-  local timer
+  local timer=0
+  local -r timeout="${!ENV_VAR_KODI_QUIT_TIMEOUT:-60}"
   local remaining
-  local -r timeout="${!ENV_VAR_KODI_QUIT_TIMEOUT:-10}"
-  timer=0
 
   log "asking Kodi to quit"
   kodi-send --action="Quit"
 
-  while [[ $timer -lt $timeout && -n $(pidof kodi.bin) ]]; do
-
+  while [[ $timer -lt $timeout && -n $(get_kodi_pid) ]]; do
     remaining=$((timeout - timer))
-
     log "waiting for Kodi to terminate ($remaining seconds until timeout)"
-    sleep 1
     timer=$((timer+1))
+    sleep 1
   done
 
-  if [[ -z $(pidof kodi.bin) ]]; then
-    log 'Kodi terminated successfully'
-    exit 0
+  if [[ -z $(get_kodi_pid) ]]; then
+    die 'Kodi terminated successfully' 0
   fi
 
-  log 'WARNING: timeout reached'
+  log "WARNING: timeout of $timeout second(s) reached"
 }
 
 start_kodi () {
 
   local -r command="${!ENV_VAR_KODI_COMMAND:-kodi-standalone}"
 
-  if [[ -z $(get_sound_package) ]]; then
-    log "FATAL ERROR: libasound2 or pulseaudio is required to run Kodi"
-    exit 1
+  # ensure we have a sound package
+  if [[ ! $(dpkg -s ${!AUDIO_PACKAGE_NAME} &> /dev/null) ]]; then
+    die "FATAL ERROR: the ${!AUDIO_PACKAGE_NAME} package is required to run Kodi" 1
   fi
 
   # gracefully stop Kodi whenever this script is terminated for any reason
