@@ -69,34 +69,27 @@ priority of the Kodi process:
 
 ### Stopping Kodi
 
-There are two ways to stop the running Kodi container:
-
-1. **(Preferred) Send `SIGHUP` or `SIGTERM` to the `x11docker` process.** 
-
-       $ kill -SIGTERM <pid>
-
-   **WARNING**: Use *only* `SIGHUP` or `SIGTERM`. Do not use `Ctrl-C` or send any other signal as this can cause Kodi 
-   to crash spectacularly.
+You should use `docker stop` to stop the container.
    
-1. **`docker stop`** the Kodi container
-
-       $ docker stop <containerid>
+    $ docker stop <containerid>
        
-When the container receives a signal to terminate, from either of the two means above, it will ask Kodi to shut down
-gracefully and wait for up to 10 seconds before timing out and allowing Docker to forcefully terminate the container. 
-Usually Kodi only takes a few seconds to shut down, so 10 seconds should be plenty of time for most installations. 
-However if you would like to extend this timeout for any reason, you can utilize the environment variable 
-`KODI_QUIT_TIMEOUT`. For example, to wait 120 seconds before timing out:
+When the container receives a signal to terminate, it will ask Kodi to shut down gracefully and wait for up to 10 
+seconds before timing out and allowing Docker to forcefully terminate the container. Usually Kodi only takes a few 
+seconds to shut down, so 10 seconds should be plenty of time for most installations. However if you would like to extend 
+this timeout for any reason, you can utilize the environment variable `KODI_QUIT_TIMEOUT`. For example, to wait 120 
+seconds before timing out:
 
     $ x11docker ... -- '--env KODI_QUIT_TIMEOUT=120' erichough/kodi
     
-Note that if you increase this timeout *and* you stop Kodi via `docker stop`, you should use the `--time` option
-to match your desired timeout. e.g.
+Note that if you increase this timeout, you should use the `--time` option for `docker stop` to match your desired
+timeout. e.g.
 
     $ docker stop --time=120 <containerid>
     
 Otherwise, Docker will forcefully kill the container after only 10 seconds and your desired timeout will have no effect.
-For this reason, and for simplicity's sake, it's better to signal `x11docker` instead of using `docker stop`.
+
+**WARNING**. If you kill the `x11docker` process directly without stopping the container first, Kodi will [crash
+spectacularly](https://github.com/mviereck/x11docker/issues/37).
 
 ### Example systemd Service Unit
 
@@ -106,7 +99,11 @@ For this reason, and for simplicity's sake, it's better to signal `x11docker` in
     After=network.target docker.service
     
     [Service]
-    ExecStart=/usr/bin/x11docker ... erichough/kodi
+    Environment=KODI_IMAGE=erichough/kodi
+    ExecStart=/usr/bin/x11docker ... ${KODI_IMAGE}
+    
+    # see https://github.com/mviereck/x11docker/issues/37 for an explanation on why this is necessary
+    ExecStop=/bin/sh -c 'echo "will stop ${KODI_IMAGE}" && /usr/bin/docker stop $(/usr/bin/docker ps -q --filter name=x11docker_X --filter name=$(echo ${KODI_IMAGE} | tr / - | tr : - ) --filter status=running)'
     Restart=always
     
     [Install]

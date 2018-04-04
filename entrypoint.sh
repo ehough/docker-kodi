@@ -25,7 +25,7 @@
 # 1. start Kodi by calling kodi-standalone (configurable via environment
 #    variable KODI_COMMAND).
 #
-# 2. cleanly stop Kodi when the container terminates, waiting up to 60
+# 2. cleanly stop Kodi when the container terminates, waiting up to 10
 #    seconds (configurable via environment variable KODI_QUIT_TIMEOUT)
 #    before itself exiting.
 #
@@ -58,7 +58,7 @@ stop_kodi () {
   fi
 
   local timer=0
-  local -r timeout="${!ENV_VAR_KODI_QUIT_TIMEOUT:-60}"
+  local -r timeout="${!ENV_VAR_KODI_QUIT_TIMEOUT:-10}"
   local remaining
 
   log "asking Kodi to quit"
@@ -83,7 +83,7 @@ start_kodi () {
   local -r command="${!ENV_VAR_KODI_COMMAND:-kodi-standalone}"
 
   # ensure we have a sound package
-  if [[ ! $(dpkg -s ${AUDIO_PACKAGE_NAME} &> /dev/null) ]]; then
+  if ! $(dpkg -s ${AUDIO_PACKAGE_NAME} &> /dev/null); then
     die "FATAL ERROR: the ${AUDIO_PACKAGE_NAME} package is required to run Kodi" 1
   fi
 
@@ -92,7 +92,7 @@ start_kodi () {
 
   log "starting Kodi with command: $command"
 
-  "$command"
+  $command
 }
 
 start_kodi
