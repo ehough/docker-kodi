@@ -1,6 +1,7 @@
-# ehough/docker-kodi - Kodi in a Docker container
+# ehough/docker-kodi - Dockerized Kodi with audio and video.
 #
 # https://github.com/ehough/docker-kodi
+# https://hub.docker.com/r/erichough/kodi/
 #
 # Copyright 2018 - Eric Hough (eric@tubepress.com)
 #
