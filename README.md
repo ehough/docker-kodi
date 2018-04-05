@@ -60,7 +60,7 @@ and a shared read-only Docker volume for media files:
 Note that the optional argument passed after `--`, which defines additional arguments to be passed to `docker run`, 
 needs to be enclosed in quotes.
            
-By default, the container will invoke `kodi-standalone` when the container starts. This will boot Kodi and should work 
+By default, the container will invoke `kodi-standalone` upon startup. This will boot Kodi and should work 
 well for most installations. If you would like to customize this behavior, you can utilize the environment variable 
 `KODI_COMMAND` to call additional scripts or processes before starting Kodi. For example, to reduce the priority of the 
 Kodi process:
