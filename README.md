@@ -2,7 +2,7 @@
 
 Dockerized Kodi with audio and video.
 
-![Kodi screenshot](https://kodi.wiki/images/3/33/Estuary-home.jpg "Kodi screenshot")
+![Kodi screenshot](https://kodi.tv/sites/default/files/page/field_image/about--devices.jpg "Kodi screenshot")
 
 ## Features
 
@@ -76,7 +76,7 @@ There are two ways to stop the running Kodi container:
        $ kill -SIGTERM <pid>
 
    **WARNING**: If you run `x11docker` from a terminal, **do not use `Ctrl-C`**  to end the process as this will cause 
-   Kodi to crash spectacularly. Instead, open another session and use `kill`.
+   Kodi to crash spectacularly. Instead, open another shell and use `kill`.
    
 1. **Use `docker stop`**
    
