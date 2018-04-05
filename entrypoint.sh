@@ -34,7 +34,6 @@
 
 readonly ENV_VAR_KODI_COMMAND="KODI_COMMAND"
 readonly ENV_VAR_KODI_QUIT_TIMEOUT="KODI_QUIT_TIMEOUT"
-readonly AUDIO_PACKAGE_NAME="libasound2"
 
 log () {
 
@@ -82,11 +81,6 @@ stop_kodi () {
 start_kodi () {
 
   local -r command="${!ENV_VAR_KODI_COMMAND:-kodi-standalone}"
-
-  # ensure we have a sound package
-  if ! dpkg -s ${AUDIO_PACKAGE_NAME} &> /dev/null; then
-    die "FATAL ERROR: the ${AUDIO_PACKAGE_NAME} package is required to run Kodi" 1
-  fi
 
   # gracefully stop Kodi whenever this script is terminated for any reason
   trap stop_kodi EXIT
