@@ -6,7 +6,7 @@ Dockerized Kodi with audio and video.
 
 ## Features
 
-* fully-functional Kodi installation in a Docker container
+* fully-functional [Kodi](https://kodi.tv/) installation in a [Docker](https://www.docker.com/) container
 * **audio** ([ALSA or PulseAudio](https://kodi.wiki/view/Linux_audio)) and **video** (with optional OpenGL hardware 
   video acceleration) via [x11docker](https://github.com/mviereck/x11docker/)
 * simple, Ubuntu-based image that adheres to the [official Kodi installation instructions](https://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux#Installing_Kodi_on_Ubuntu-based_distributions)
@@ -40,7 +40,7 @@ The host system will need the following:
 
 ### Starting Kodi
 
-Use `x11docker` to start your desired [Kodi image](#image-tags). Detailing the myriad of `x11docker` options is beyond 
+Use `x11docker` to start a [variant of `erichough/kodi`](#image-variants). Detailing the myriad of `x11docker` options is beyond 
 the scope of this document; please consult the [`x11docker` documentation](https://github.com/mviereck/x11docker/) to 
 find the set of options that work for your system.
 
@@ -113,7 +113,11 @@ using `docker stop`.
     [Install]
     WantedBy=multi-user.target
 
-## Image Tags
+## Image Variants
+
+Choose an image based on your preferred audio system: [ALSA or PulseAudio](https://kodi.wiki/view/Linux_audio).
+Very broadly speaking, ALSA is better for systems that are dedicated to Kodi while PulseAudio is better for 
+desktop-like systems.
 
 |                  | ALSA | PulseAudio |
 |------------------|------|------------|
