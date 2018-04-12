@@ -1,4 +1,4 @@
-# ehough/docker-kodi
+# erichough/kodi
 
 Dockerized Kodi with audio and video.
 
