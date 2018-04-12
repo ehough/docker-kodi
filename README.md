@@ -40,63 +40,33 @@ The host system will need the following:
 
 ### Starting Kodi
 
-Use `x11docker` to start a [variant of `erichough/kodi`](#image-variants). Detailing the myriad of `x11docker` options is beyond 
-the scope of this document; please consult the [`x11docker` documentation](https://github.com/mviereck/x11docker/) to 
-find the set of options that work for your system.
+Use `x11docker` to start the Docker image `erichough/kodi` (or one of its [variants](#image-variants)). Detailing the 
+myriad of `x11docker` options is beyond the scope of this document; please consult the 
+[`x11docker` documentation](https://github.com/mviereck/x11docker/) to find the set of options that work for your 
+system.
 
 Below is an example command (split into multiple lines for clarity) that starts Kodi with a fresh X.Org X server on 
-virtual terminal 7 with ALSA sound, no window manager, hardware video acceleration, a persistent Kodi home directory, 
-and a shared read-only Docker volume for media files:
+virtual terminal 7 with PulseAudio sound, no window manager, hardware video acceleration, a persistent Kodi home 
+directory, and a shared read-only Docker mount for media files:
 
     $ x11docker --xorg                                \
                 --vt 7                                \
-                --alsa                                \
+                --pulseaudio                          \
                 --wm none                             \                
                 --gpu                                 \
                 --homedir /host/path/to/kodi/home     \
                 -- "-v /host/path/to/media:/media:ro" \
-                erichough/kodi:alsa
+                erichough/kodi
            
 Note that the optional argument passed after `--`, which defines additional arguments to be passed to `docker run`, 
 needs to be enclosed in quotes.
-           
-By default, the container will invoke `kodi-standalone` upon startup. This will boot Kodi and should work 
-well for most installations. If you would like to customize this behavior, you can utilize the environment variable 
-`KODI_COMMAND` to call additional scripts or processes before starting Kodi. For example, to reduce the priority of the 
-Kodi process:
-
-    $ x11docker ... -- '--cap-add SYS_NICE --env KODI_COMMAND="nice kodi-standalone"' erichough/kodi
 
 ### Stopping Kodi
 
-There are two ways to stop the running Kodi container:
+You can shut down Kodi just as you normally would; i.e. by using the power menu from the Kodi home screen. 
+Behind the scenes, the Docker container and `x11docker` processes will terminate cleanly.
 
-1. **(Preferred) Send `SIGHUP` or `SIGTERM` to the `x11docker` process.** 
-
-       $ kill -SIGTERM <pid>
-
-   **WARNING**: If you run `x11docker` from a terminal, **do not use `Ctrl-C`**  to end the process as this will cause 
-   Kodi to crash spectacularly. Instead, open another shell and use `kill`.
-   
-1. **Use `docker stop`**
-   
-       $ docker stop <containerid>
-       
-When the container receives a signal to terminate, from either of the two means above, it will ask Kodi to shut down 
-gracefully and wait for up to 10 seconds before timing out and allowing Docker to forcefully terminate the container. 
-Usually Kodi only takes a few seconds to shut down, so 10 seconds should be plenty of time. However if you would like to
-extend this timeout for any reason, you can utilize the environment variable `KODI_QUIT_TIMEOUT`. For example, to wait 
-120 seconds before timing out:
-
-    $ x11docker ... -- '--env KODI_QUIT_TIMEOUT=120' erichough/kodi
-    
-Note that if you increase this timeout, you should *only* stop Kodi with `docker stop` *and* use its `--time` option to 
-match your desired timeout. e.g.
-
-    $ docker stop --time=120 <containerid>
-    
-Unless you really need more than 10 seconds, and for simplicity's sake, it's better to signal `x11docker` instead of 
-using `docker stop`.
+You can also [terminate the container from the command line](doc/advanced.md#command-line-shutdown).
 
 ### Example systemd Service Unit
 
@@ -106,7 +76,7 @@ using `docker stop`.
     After=network.target docker.service
     
     [Service]
-    ExecStart=/usr/bin/x11docker ... erichough/kodi:alsa 
+    ExecStart=/usr/bin/x11docker ... erichough/kodi:latest 
     Restart=always
     KillMode=process
     
@@ -115,14 +85,17 @@ using `docker stop`.
 
 ## Image Variants
 
-Choose an image based on your preferred audio system: [ALSA or PulseAudio](https://kodi.wiki/view/Linux_audio).
-Very broadly speaking, ALSA is better for systems that are dedicated to Kodi while PulseAudio is better for 
-desktop-like systems.
+The default `erichough/kodi` image should work well on all systems. Images tagged with `alsa` do not include PulseAudio
+and are slightly smaller in size.
 
-|                  | ALSA | PulseAudio |
-|------------------|------|------------|
-| **Kodi Krypton** | <ul><li>`erichough/kodi:latest`</li><li>`erichough/kodi:alsa`</li><li>`erichough/kodi:alsa-latest`</li><li>`erichough/kodi:alsa-krypton`</li></ul>  | <ul><li>`erichough/kodi:pulseaudio`</li><li>`erichough/kodi:pulseaudio-latest`</li><li>`erichough/kodi:pulseaudio-krypton`</li></ul>        |
-|                  |      |            |
+|                  | Universal (works everywhere) | ALSA *only* (slightly smaller image) |
+|------------------|---------------------------------------------|--------------------------------------|
+| **Kodi Krypton** |  `erichough/kodi`                    | `erichough/kodi:alsa`                |
+|                  |                                             |                                      |
+
+## Advanced
+
+The [advanced topics](doc/advanced.md) documentation describes a few more useful features and functionality.
 
 ## Contributing
 

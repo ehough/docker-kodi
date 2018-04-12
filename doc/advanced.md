@@ -1,6 +1,6 @@
 # Advanced Topics
 
-This page details available features that most users won't want or need.
+This page details available features that most users won't likely need.
 
 * [Custom Startup Behavior](#custom-startup-behavior)
 * [Command-Line Shutdown](#command-line-shutdown)

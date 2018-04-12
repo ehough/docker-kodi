@@ -40,3 +40,9 @@ ADD entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+# install PulseAudio in a separate, last instruction to re-use intermediate images for ALSA branch
+RUN apt-get update                                        && \
+    apt-get install -y --no-install-recommends pulseaudio && \
+    apt-get -y --purge autoremove                         && \
+    rm -rf /var/lib/apt/lists/*
