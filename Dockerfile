@@ -37,7 +37,6 @@ RUN packages="kodi kodi-eventclients-xbmc-send ca-certificates" && \
 
 # setup entry point
 COPY entrypoint.sh /usr/local/bin
-
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # install PulseAudio in a separate, last instruction to re-use intermediate images for ALSA branch
