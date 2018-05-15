@@ -40,7 +40,7 @@ The host system will need the following:
 
 ### Starting Kodi
 
-Use `x11docker` to start the Docker image `erichough/kodi` (or one of its [variants](#image-variants)). Detailing the 
+Use `x11docker` to start the `erichough/kodi` Docker image (or one of its [variants](#image-variants)). Detailing the 
 myriad of `x11docker` options is beyond the scope of this document; please consult the 
 [`x11docker` documentation](https://github.com/mviereck/x11docker/) to find the set of options that work for your 
 system.
@@ -76,7 +76,8 @@ You can also [terminate the container from the command line](doc/advanced.md#com
     After=network.target docker.service
     
     [Service]
-    ExecStart=/usr/bin/x11docker ... erichough/kodi:latest 
+    ExecStartPre=/usr/bin/docker pull erichough/kodi
+    ExecStart=/usr/bin/x11docker ... erichough/kodi
     Restart=always
     KillMode=process
     
