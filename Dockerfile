@@ -18,29 +18,55 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 # install the team-xbmc ppa
 RUN apt-get update                                                        && \
     apt-get install -y --no-install-recommends software-properties-common && \
     add-apt-repository ppa:team-xbmc/ppa                                  && \
-    apt-get -y purge software-properties-common                           && \
+    apt-get -y purge ca-certificates openssl software-properties-common   && \
     apt-get -y --purge autoremove                                         && \
     rm -rf /var/lib/apt/lists/*
 
-# install packages
-RUN packages="kodi kodi-eventclients-xbmc-send ca-certificates" && \
-    apt-get update                                              && \
-    apt-get install -y --no-install-recommends $packages        && \
-    apt-get -y --purge autoremove                               && \
+# install base packages
+RUN packages="kodi kodi-eventclients-xbmc-send"          && \
+    apt-get update                                       && \
+    apt-get install -y --no-install-recommends $packages && \
+    apt-get -y --purge autoremove                        && \
     rm -rf /var/lib/apt/lists/*
 
 # setup entry point
 COPY entrypoint.sh /usr/local/bin
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# install PulseAudio in a separate, last instruction to re-use intermediate images for ALSA branch
-RUN apt-get update                                        && \
-    apt-get install -y --no-install-recommends pulseaudio && \
-    apt-get -y --purge autoremove                         && \
+# install optional packages. do this last so we can cache the above layers between branches
+RUN packages="                                              \
+    kodi-pvr-argustv                                        \
+    kodi-pvr-dvblink                                        \
+    kodi-pvr-dvbviewer                                      \
+    kodi-pvr-hdhomerun                                      \
+    kodi-pvr-hts                                            \
+    kodi-pvr-iptvsimple                                     \
+    kodi-pvr-mythtv                                         \
+    kodi-pvr-nextpvr                                        \
+    kodi-pvr-njoy                                           \
+    kodi-pvr-octonet                                        \
+    kodi-pvr-pctv                                           \
+    kodi-pvr-vbox                                           \
+    kodi-pvr-vdr-vnsi                                       \
+    kodi-pvr-vuplus=*~bionic                                \
+    pulseaudio"                                          && \
+    apt-get update                                       && \
+    apt-get install -y --no-install-recommends $packages && \
+    apt-get -y --purge autoremove                        && \
     rm -rf /var/lib/apt/lists/*
+
+# notes on the PVR packages:
+#
+# kodi-pvr-vuplus needs its version set to prevent the Debian package from taking priority
+# kodi-pvr-mediaportal-tvserver can in installed once this issue [1] is fixed.
+# kodi-pvr-wmc can be installed once this PR [2] makes its way into the Team XBMC PPA. See this issue [3] for details.
+#
+# [1] https://github.com/kodi-pvr/pvr.mediaportal.tvserver/issues/86
+# [2] https://github.com/kodi-pvr/pvr.wmc/pull/61
+# [3] https://github.com/kodi-pvr/pvr.wmc/issues/60
