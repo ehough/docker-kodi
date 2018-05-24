@@ -2,10 +2,22 @@
 
 This page details available features that most users won't likely need.
 
+* [Image Variants](#image-variants)
 * [Custom Startup Behavior](#custom-startup-behavior)
 * [Command-Line Shutdown](#command-line-shutdown)
 
 ---
+
+## Image Variants
+
+The default `erichough/kodi` image (a.k.a. `erichough/kodi:latest`) should work well on all systems. Depending on your audio setup and PVR needs, you might be able to run a slightly leaner image. The table below outlines the available image tags.
+
+| image tag    | Kodi    | ALSA                                                      | PulseAudio                                | PVR add-ons                               | notes                               |
+|--------------|---------|-----------------------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------|
+| `latest`     | Krypton | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | largest image, but works everywhere |
+| `pulseaudio` | Krypton | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> |                                     |
+| `pvr`        | Krypton | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> |                                     |
+| `alsa`       | Krypton | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | smallest image                      |
 
 ## Custom Startup Behavior
 

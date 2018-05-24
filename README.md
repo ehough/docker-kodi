@@ -84,26 +84,16 @@ You can also [terminate the container from the command line](doc/advanced.md#com
     [Install]
     WantedBy=multi-user.target
 
-## Image Variants
-
-The default `erichough/kodi` image should work well on all systems. Images tagged with `alsa` do not include PulseAudio
-and are slightly smaller in size.
-
-|                  | Universal (works everywhere) | ALSA *only* (slightly smaller image) |
-|------------------|---------------------------------------------|--------------------------------------|
-| **Kodi Krypton** |  `erichough/kodi`                    | `erichough/kodi:alsa`                |
-|                  |                                             |                                      |
-
 ## Advanced
 
-The [advanced topics](doc/advanced.md) documentation describes a few more useful features and functionality.
+The [advanced topics](doc/advanced.md) documentation describes a few more useful features and functionality:
+
+ * [Image Variants](doc/advanced.md#image-variants)
+ * [Custom Startup Behavior](doc/advanced.md#custom-startup-behavior)
+ * [Command-Line Shutdown](doc/advanced.md#command-line-shutdown)
 
 ## Contributing
 
 Constructive criticism and contributions are welcome! Please 
 [submit an issue](https://github.com/ehough/docker-kodi/issues/new) or 
 [pull request](https://github.com/ehough/docker-kodi/compare).
-
-## Future Work
-
-* Kodi PVR support
