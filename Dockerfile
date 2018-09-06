@@ -47,6 +47,7 @@ RUN packages="                                              \
     kodi-pvr-hdhomerun                                      \
     kodi-pvr-hts                                            \
     kodi-pvr-iptvsimple                                     \
+    kodi-pvr-mediaportal-tvserver                           \
     kodi-pvr-mythtv                                         \
     kodi-pvr-nextpvr                                        \
     kodi-pvr-njoy                                           \
@@ -64,9 +65,7 @@ RUN packages="                                              \
 # notes on the PVR packages:
 #
 # kodi-pvr-vuplus needs its version set to prevent the Debian package from taking priority
-# kodi-pvr-mediaportal-tvserver can in installed once this issue [1] is fixed.
-# kodi-pvr-wmc can be installed once this PR [2] makes its way into the Team XBMC PPA. See this issue [3] for details.
+# kodi-pvr-wmc can be installed once this PR [1] makes its way into the Team XBMC PPA. See this issue [2] for details.
 #
-# [1] https://github.com/kodi-pvr/pvr.mediaportal.tvserver/issues/86
-# [2] https://github.com/kodi-pvr/pvr.wmc/pull/61
-# [3] https://github.com/kodi-pvr/pvr.wmc/issues/60
+# [1] https://github.com/kodi-pvr/pvr.wmc/pull/61
+# [2] https://github.com/kodi-pvr/pvr.wmc/issues/60
