@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * MediaPortal TV-Server PVR support
 
+### Fixed
+
+* Wrong timezone / timezone can not be set ([#5](https://github.com/ehough/docker-kodi/issues/5))
+
 ## [1.1.0] - 2018-05-24
 
 ### Added
