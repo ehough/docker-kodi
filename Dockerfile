@@ -43,6 +43,8 @@ ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # install optional packages. do this last so we can cache the above layers between branches
 RUN packages="                                              \
+    kodi-inputstream-rtmp                                   \
+    kodi-inputstream-adaptive                               \
     kodi-pvr-argustv                                        \
     kodi-pvr-dvblink                                        \
     kodi-pvr-dvbviewer                                      \
