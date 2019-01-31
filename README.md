@@ -49,17 +49,16 @@ Below is an example command (split into multiple lines for clarity) that starts 
 virtual terminal 7 with PulseAudio sound, no window manager, hardware video acceleration, a persistent Kodi home 
 directory, and a shared read-only Docker mount for media files:
 
-    $ x11docker --xorg                                \
-                --vt 7                                \
-                --pulseaudio                          \
-                --wm none                             \                
-                --gpu                                 \
-                --homedir /host/path/to/kodi/home     \
-                -- "-v /host/path/to/media:/media:ro" \
+    $ x11docker --xorg                                 \
+                --vt 7                                 \
+                --pulseaudio                           \
+                --wm none                              \                
+                --gpu                                  \
+                --homedir /host/path/to/kodi/home      \
+                -- -v /host/path/to/media:/media:ro -- \
                 erichough/kodi
            
-Note that the optional argument passed after `--`, which defines additional arguments to be passed to `docker run`, 
-needs to be enclosed in quotes.
+Note that the optional argument passed between a pair of `--` defines additional arguments to be passed to `docker run`.
 
 ### Stopping Kodi
 
