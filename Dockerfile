@@ -3,7 +3,7 @@
 # https://github.com/ehough/docker-kodi
 # https://hub.docker.com/r/erichough/kodi/
 #
-# Copyright 2018 - Eric Hough (eric@tubepress.com)
+# Copyright 2018-2019 - Eric Hough (eric@tubepress.com)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ RUN apt-get update                                                        && \
     rm -rf /var/lib/apt/lists/*
 
 # install base packages
-# kodi-eventclients-xbmc-send allows us to shut down Kodi gracefully upon container termination
+# kodi-eventclients-kodi-send allows us to shut down Kodi gracefully upon container termination
 # tzdata is necessary for timezone functionality (see https://github.com/mviereck/x11docker/issues/50)
 RUN packages="kodi=2:17.* kodi-eventclients-kodi-send tzdata" && \
     apt-get update                                            && \
