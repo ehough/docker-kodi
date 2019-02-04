@@ -3,7 +3,7 @@
 # https://github.com/ehough/docker-kodi
 # https://hub.docker.com/r/erichough/kodi/
 #
-# Copyright 2018 - Eric Hough (eric@tubepress.com)
+# Copyright 2018-2019 - Eric Hough (eric@tubepress.com)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,23 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
-########################################################################################################################
-
-# kodi-eventclients-kodi-send allows us to shut down Kodi gracefully upon container termination, but until Debian
-# catches up to Leia, we'll need to use a multistage build to install /usr/bin/kodi-send
-
-FROM ubuntu:bionic AS events_client
-
-RUN apt-get update && apt-get install -y --no-install-recommends kodi-eventclients-kodi-send
-
-
-########################################################################################################################
-
 FROM ubuntu:bionic
-
-COPY --from=events_client /usr/bin/kodi-send                    /usr/bin/kodi-send
-COPY --from=events_client /usr/lib/python2.7/dist-packages/kodi /usr/lib/python2.7/dist-packages/kodi
 
 # install the team-xbmc ppa
 RUN apt-get update                                                        && \
@@ -45,11 +29,12 @@ RUN apt-get update                                                        && \
     rm -rf /var/lib/apt/lists/*
 
 # install base packages
+# kodi-eventclients-kodi-send allows us to shut down Kodi gracefully upon container termination
 # tzdata is necessary for timezone functionality (see https://github.com/mviereck/x11docker/issues/50)
-RUN packages="kodi tzdata"                               && \
-    apt-get update                                       && \
-    apt-get install -y --no-install-recommends $packages && \
-    apt-get -y --purge autoremove                        && \
+RUN packages="kodi=2:18.* kodi-eventclients-kodi-send tzdata" && \
+    apt-get update                                            && \
+    apt-get install -y --no-install-recommends $packages      && \
+    apt-get -y --purge autoremove                             && \
     rm -rf /var/lib/apt/lists/*
 
 # setup entry point
