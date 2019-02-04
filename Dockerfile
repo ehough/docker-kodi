@@ -32,9 +32,9 @@ RUN apt-get update                                                        && \
 # kodi-eventclients-xbmc-send allows us to shut down Kodi gracefully upon container termination
 # tzdata is necessary for timezone functionality (see https://github.com/mviereck/x11docker/issues/50)
 RUN packages="kodi=2:17.* kodi-eventclients-kodi-send tzdata" && \
-    apt-get update                                                       && \
-    apt-get install -y --no-install-recommends $packages                 && \
-    apt-get -y --purge autoremove                                        && \
+    apt-get update                                            && \
+    apt-get install -y --no-install-recommends $packages      && \
+    apt-get -y --purge autoremove                             && \
     rm -rf /var/lib/apt/lists/*
 
 # setup entry point
