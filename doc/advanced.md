@@ -10,18 +10,12 @@ This page details available features that most users won't likely need.
 
 ## Image Variants
 
-The default `erichough/kodi` image (a.k.a. `erichough/kodi:latest`) should work well on all systems. Depending on your audio setup and PVR needs, you might be able to run a slightly leaner image. The table below outlines the available image tags.
+You can run an older version of Kodi, if you'd like to, by using the appropriate image tag.
 
-| image tag    | Kodi    | ALSA                                                      | PulseAudio                                | PVR add-ons                               | notes                               |
-|--------------|---------|-----------------------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------|
-| `latest`     | v18 "Leia" | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | largest "Leia" image, but works everywhere |
-| `pulseaudio` | v18 "Leia" | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> |                                     |
-| `pvr`        | v18 "Leia" | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> |                                     |
-| `alsa`       | v18 "Leia" | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | smallest "Leia" image                      |
-| `krypton`     | v17 "Krypton" | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | largest "Krypton" image, but works everywhere |
-| `krypton-pulseaudio` | v17 "Krypton" | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> |                                     |
-| `krypton-pvr`        | v17 "Krypton" | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | <p style="text-align:center;margin-bottom:0">&#x2714;</p> |                                     |
-| `krypton-alsa`       | v17 "Krypton" | <p style="text-align:center;margin-bottom:0">&#x2714;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | <p style="text-align:center;margin-bottom:0">&#x2718;</p> | smallest "Krypton" image                      |
+| tag    | Kodi
+|--------------|---------|
+| `latest`     | v18 "Leia" | 
+| `krypton`     | v17 "Krypton"
 
 ## Custom Startup Behavior
 

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - [unreleased]
+
+### Added
+
+* Support for game controllers, joysticks, gamepads, etc.
+* Support for Libretro cores as game add-ons
+* Input stream add-ons ([#12](https://github.com/ehough/docker-kodi/pull/12)):
+  * [Adaptive](https://github.com/peak3d/inputstream.adaptive)
+  * [RTMP](https://github.com/xbmc/inputstream.rtmp)
+
+### Removed
+
+* `pulseaudio`, `alsa`, and `pvr` image tags as there was only a 6% savings in image size
+
 ## [2.0.1] - 2019-02-06
 
 ### Fixed
