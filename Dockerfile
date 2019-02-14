@@ -28,46 +28,52 @@ RUN apt-get update                                                        && \
     apt-get -y --purge autoremove                                         && \
     rm -rf /var/lib/apt/lists/*
 
-# install base packages:
-#  - kodi-eventclients-kodi-send allows us to shut down Kodi gracefully upon container termination
-#  - tzdata is necessary for timezone functionality (see https://github.com/mviereck/x11docker/issues/50)
-#  - ca-certificates allows Kodi to properly establish HTTPS connections
-RUN packages="kodi=2:18.* kodi-eventclients-kodi-send tzdata ca-certificates" && \
-    apt-get update                                                            && \
-    apt-get install -y --no-install-recommends $packages                      && \
-    apt-get -y --purge autoremove                                             && \
+# besides kodi, we will install a few extra packages:
+#  - ca-certificates              allows Kodi to properly establish HTTPS connections
+#  - kodi-eventclients-kodi-send  allows us to shut down Kodi gracefully upon container termination
+#  - kodi-game-libretro           allows Kodi to utilize Libretro cores as game add-ons
+#  - kodi-inputstream-*           input stream add-ons
+#  - kodi-peripheral-joystick     enables the use of gamepads, joysticks, game controllers, etc.
+#  - kodi-pvr-*                   PVR add-ons
+#  - pulseaudio                   in case the user prefers PulseAudio instead of ALSA
+#  - tzdata                       necessary for timezone selection
+RUN packages="                                               \
+                                                             \
+    ca-certificates                                          \
+    kodi=2:18.*                                              \
+    kodi-eventclients-kodi-send                              \
+    kodi-game-libretro                                       \
+    kodi-inputstream-rtmp                                    \
+    kodi-inputstream-adaptive                                \
+    kodi-peripheral-joystick                                 \
+    kodi-pvr-argustv                                         \
+    kodi-pvr-dvblink                                         \
+    kodi-pvr-dvbviewer                                       \
+    kodi-pvr-filmon                                          \
+    kodi-pvr-hdhomerun                                       \
+    kodi-pvr-hts                                             \
+    kodi-pvr-iptvsimple                                      \
+    kodi-pvr-mediaportal-tvserver                            \
+    kodi-pvr-mythtv                                          \
+    kodi-pvr-nextpvr                                         \
+    kodi-pvr-njoy                                            \
+    kodi-pvr-octonet                                         \
+    kodi-pvr-pctv                                            \
+    kodi-pvr-stalker                                         \
+    kodi-pvr-teleboy                                         \
+    kodi-pvr-vbox                                            \
+    kodi-pvr-vdr-vnsi                                        \
+    kodi-pvr-vuplus                                          \
+    kodi-pvr-wmc                                             \
+    kodi-pvr-zattoo                                          \
+    pulseaudio                                               \
+    tzdata"                                               && \
+                                                             \
+    apt-get update                                        && \
+    apt-get install -y --no-install-recommends $packages  && \
+    apt-get -y --purge autoremove                         && \
     rm -rf /var/lib/apt/lists/*
 
 # setup entry point
 COPY entrypoint.sh /usr/local/bin
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
-# install optional packages. do this last so we can cache the above layers between branches
-RUN packages="                                              \
-    kodi-inputstream-rtmp                                   \
-    kodi-inputstream-adaptive                               \
-    kodi-pvr-argustv                                        \
-    kodi-pvr-dvblink                                        \
-    kodi-pvr-dvbviewer                                      \
-    kodi-pvr-filmon                                         \
-    kodi-pvr-hdhomerun                                      \
-    kodi-pvr-hts                                            \
-    kodi-pvr-iptvsimple                                     \
-    kodi-pvr-mediaportal-tvserver                           \
-    kodi-pvr-mythtv                                         \
-    kodi-pvr-nextpvr                                        \
-    kodi-pvr-njoy                                           \
-    kodi-pvr-octonet                                        \
-    kodi-pvr-pctv                                           \
-    kodi-pvr-stalker                                        \
-    kodi-pvr-teleboy                                        \
-    kodi-pvr-vbox                                           \
-    kodi-pvr-vdr-vnsi                                       \
-    kodi-pvr-vuplus                                         \
-    kodi-pvr-wmc                                            \
-    kodi-pvr-zattoo                                         \
-    pulseaudio"                                          && \
-    apt-get update                                       && \
-    apt-get install -y --no-install-recommends $packages && \
-    apt-get -y --purge autoremove                        && \
-    rm -rf /var/lib/apt/lists/*
