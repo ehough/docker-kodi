@@ -67,7 +67,8 @@ RUN packages="                                               \
     kodi-pvr-wmc                                             \
     kodi-pvr-zattoo                                          \
     pulseaudio                                               \
-    tzdata"                                               && \
+    tzdata                                                   \
+    libcec4"                                              && \
                                                              \
     apt-get update                                        && \
     apt-get install -y --no-install-recommends $packages  && \
