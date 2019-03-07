@@ -18,8 +18,7 @@ The host system will need the following:
 
 1. **Linux** and [**Docker**](https://www.docker.com)
 
-   Though not yet extensively tested, this image should work on any Linux distribution with a functional
-   Docker installation.
+   This image should work on any Linux distribution with a functional Docker installation.
    
 1. **A connected display and speaker(s)**
 
@@ -27,7 +26,7 @@ The host system will need the following:
 
 1. **[X](https://www.x.org/) or [Wayland](https://wayland.freedesktop.org/)**
 
-   Ensure that the packages for an X or Wayland server are present on the Docker host. Please consult your OS's 
+   Ensure that the packages for an X or Wayland server are present on the Docker host. Please consult your distribution's 
    documentation if you're not sure what to install. A display server does *not* need to be running ahead of time.
 
 1. **[x11docker](https://github.com/mviereck/x11docker/)**
@@ -40,19 +39,16 @@ The host system will need the following:
 
 ### Starting Kodi
 
-Use `x11docker` to start the `erichough/kodi` Docker image (or one of its [variants](#image-variants)). Detailing the 
-myriad of `x11docker` options is beyond the scope of this document; please consult the 
-[`x11docker` documentation](https://github.com/mviereck/x11docker/) to find the set of options that work for your 
-system.
+Use `x11docker` to start the `erichough/kodi` Docker image. Detailing the myriad of `x11docker` options is beyond the 
+scope of this document; please consult the [`x11docker` documentation](https://github.com/mviereck/x11docker/) to find 
+the set of options that work for your setup.
 
-Below is an example command (split into multiple lines for clarity) that starts Kodi with a fresh X.Org X server on 
-virtual terminal 7 with PulseAudio sound, no window manager, hardware video acceleration, a persistent Kodi home 
-directory, and a shared read-only Docker mount for media files:
+Below is an example command (split into multiple lines for clarity) that starts Kodi with a fresh X.Org X server with
+PulseAudio sound, hardware video acceleration, a persistent Kodi home directory, and a shared read-only Docker mount for
+media files:
 
     $ x11docker --xorg                                 \
-                --vt 7                                 \
                 --pulseaudio                           \
-                --wm none                              \                
                 --gpu                                  \
                 --homedir /host/path/to/kodi/home      \
                 -- -v /host/path/to/media:/media:ro -- \
