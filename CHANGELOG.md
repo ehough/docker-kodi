@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2019-05-28
+
+### Changed
+
+* Bump to [Kodi 18.2](https://kodi.tv/article/kodi-leia-182-release)
+
+### Added
+
+* Libretro cores
+  * [Arcade (FB Alpha)](https://docs.libretro.com/library/fb_alpha/)
+  * [Arcade (FB Alpha 2012)](https://docs.libretro.com/library/fb_alpha_2012/)
+  * [Atari - 2600 (Stella)](http://docs.libretro.com/library/stella/)
+  * [Atari - Jaguar (Virtual Jaguar)](http://docs.libretro.com/library/virtual_jaguar/)
+  * [Doom (PrBoom)](http://docs.libretro.com/library/prboom/)
+  * [Nintendo - Game Boy / Color (Gambatte)](http://docs.libretro.com/library/gambatte/)
+  * [Nintendo - Game Boy / Color (TGB Dual)](http://docs.libretro.com/library/tgb_dual/)
+  * [Nintendo - Game Boy Advance (VBA Next)](http://docs.libretro.com/library/vba_next/)
+  * [ZX Spectrum (Fuse)](http://docs.libretro.com/library/fuse/)
+* PVR add-on: [Sledovanitv.cz](https://kodi.wiki/view/Add-on:Sledovanitv.cz_PVR_Client)
+
 ## [2.1.0] - 2019-02-14
 
 ### Added

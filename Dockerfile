@@ -32,6 +32,7 @@ RUN apt-get update                                                        && \
 #  - ca-certificates              allows Kodi to properly establish HTTPS connections
 #  - kodi-eventclients-kodi-send  allows us to shut down Kodi gracefully upon container termination
 #  - kodi-game-libretro           allows Kodi to utilize Libretro cores as game add-ons
+#  - kodi-game-libretro-*         Libretro cores
 #  - kodi-inputstream-*           input stream add-ons
 #  - kodi-peripheral-joystick     enables the use of gamepads, joysticks, game controllers, etc.
 #  - kodi-pvr-*                   PVR add-ons
@@ -43,6 +44,15 @@ RUN packages="                                               \
     kodi=2:17.*                                              \
     kodi-eventclients-kodi-send                              \
     kodi-game-libretro                                       \
+    kodi-game-libretro-fbalpha                               \
+    kodi-game-libretro-fbalpha2012                           \
+    kodi-game-libretro-fuse                                  \
+    kodi-game-libretro-gambatte                              \
+    kodi-game-libretro-prboom                                \
+    kodi-game-libretro-stella                                \
+    kodi-game-libretro-tgbdual                               \
+    kodi-game-libretro-vba-next                              \
+    kodi-game-libretro-virtualjaguar                         \
     kodi-inputstream-rtmp                                    \
     kodi-inputstream-adaptive                                \
     kodi-peripheral-joystick                                 \
@@ -59,6 +69,7 @@ RUN packages="                                               \
     kodi-pvr-njoy                                            \
     kodi-pvr-octonet                                         \
     kodi-pvr-pctv                                            \
+    kodi-pvr-sledovanitv-cz                                  \
     kodi-pvr-stalker                                         \
     kodi-pvr-teleboy                                         \
     kodi-pvr-vbox                                            \
