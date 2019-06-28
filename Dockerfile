@@ -41,7 +41,7 @@ RUN apt-get update                                                        && \
 RUN packages="                                               \
                                                              \
     ca-certificates                                          \
-    kodi=2:18.2+*                                            \
+    kodi=2:18.3+*                                            \
     kodi-eventclients-kodi-send                              \
     kodi-game-libretro                                       \
     kodi-game-libretro-fbalpha                               \
