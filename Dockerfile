@@ -87,7 +87,9 @@ RUN packages="                                               \
                                                              \
     apt-get update                                        && \
     apt-get install -y --no-install-recommends $packages  && \
+    apt-get install -y dist-upgrade                       && \
     apt-get -y --purge autoremove                         && \
+    apt-get -y --purge autoclean                          && \
     rm -rf /var/lib/apt/lists/*
 
 # setup entry point
