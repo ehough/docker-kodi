@@ -78,6 +78,8 @@ RUN packages="                                               \
     kodi-pvr-wmc                                             \
     kodi-pvr-zattoo                                          \
     pulseaudio                                               \
+    libnss3                                                  \
+    libnss3-tools                                            \
     tzdata"                                               && \
                                                              \
     apt-get update                                        && \
