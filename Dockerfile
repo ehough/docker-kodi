@@ -78,6 +78,8 @@ RUN packages="                                               \
     kodi-pvr-vuplus                                          \
     kodi-pvr-wmc                                             \
     kodi-pvr-zattoo                                          \
+    retroarch                                                \
+    libretro-parallel-n64                                    \
     pulseaudio                                               \
     libnss3                                                  \
     libnss3-tools                                            \
