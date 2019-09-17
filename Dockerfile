@@ -44,6 +44,13 @@ RUN packages="                                               \
     kodi=2:17.*                                              \
     kodi-eventclients-kodi-send                              \
     kodi-game-libretro                                       \
+    kodi-game-libretro-beetle-pce-fast                       \
+    kodi-game-libretro-beetle-vb                             \
+    kodi-game-libretro-beetle-wswan                          \
+    kodi-game-libretro-bsnes-mercury-accuracy                \
+    kodi-game-libretro-bsnes-mercury-balanced                \
+    kodi-game-libretro-bsnes-mercury-performance             \
+    kodi-game-libretro-desmume                               \
     kodi-game-libretro-fbalpha                               \
     kodi-game-libretro-fbalpha2012                           \
     kodi-game-libretro-fuse                                  \
@@ -53,8 +60,8 @@ RUN packages="                                               \
     kodi-game-libretro-tgbdual                               \
     kodi-game-libretro-vba-next                              \
     kodi-game-libretro-virtualjaguar                         \
-    kodi-inputstream-rtmp                                    \
     kodi-inputstream-adaptive                                \
+    kodi-inputstream-rtmp                                    \
     kodi-peripheral-joystick                                 \
     kodi-pvr-argustv                                         \
     kodi-pvr-dvblink                                         \
