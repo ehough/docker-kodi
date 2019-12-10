@@ -4,11 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [2.4.0] - 2019-12-10
 
 ### Changed
 
-* Bump to [Kodi 18.4](https://kodi.tv/article/kodi-leia-184-release)
+* Bump to [Kodi 18.5](https://kodi.tv/article/kodi-leia-185-release)
 
 ### Added
 
@@ -20,6 +20,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   * [Nintendo - SNES / Famicom (bsnes-mercury Balanced)](http://docs.libretro.com/library/bsnes_mercury_balanced/)
   * [Nintendo - SNES / Famicom (bsnes-mercury Performance)](http://docs.libretro.com/library/bsnes_mercury_performance/)
   * [Nintendo - Virtual Boy (Beetle VB)](http://docs.libretro.com/library/beetle_vb/)
+* Kodi screensavers
+  * [Asteroids](https://kodi.tv/addon/screensaver/asteroids)
+  * [Asterwave](https://kodi.tv/addon/screensaver/asterwave)
+  * [BioGenesis](https://kodi.tv/addon/screensaver/biogenesis)
+  * [Greynetic](https://kodi.tv/addon/screensaver/greynetic)
+  * [Matrix trails](https://kodi.tv/addon/screensaver/matrix-trails)
+  * [Ping Pong](https://kodi.wiki/view/Add-on:Ping_Pong)
+  * [Pyro](https://kodi.tv/addon/screensaver/pyro)
+  * [Stars](https://kodi.tv/addon/screensaver/stars)
 
 ## [2.3.0] - 2019-06-27
 
