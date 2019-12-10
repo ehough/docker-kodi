@@ -36,12 +36,13 @@ RUN apt-get update                                                        && \
 #  - kodi-inputstream-*           input stream add-ons
 #  - kodi-peripheral-joystick     enables the use of gamepads, joysticks, game controllers, etc.
 #  - kodi-pvr-*                   PVR add-ons
+#  - kodi-screensaver-*           additional screensavers
 #  - pulseaudio                   in case the user prefers PulseAudio instead of ALSA
 #  - tzdata                       necessary for timezone selection
 RUN packages="                                               \
                                                              \
     ca-certificates                                          \
-    kodi=2:18.4+*                                            \
+    kodi=2:18.5+*                                            \
     kodi-eventclients-kodi-send                              \
     kodi-game-libretro                                       \
     kodi-game-libretro-beetle-pce-fast                       \
@@ -84,6 +85,14 @@ RUN packages="                                               \
     kodi-pvr-vuplus                                          \
     kodi-pvr-wmc                                             \
     kodi-pvr-zattoo                                          \
+    kodi-screensaver-asteroids                               \
+    kodi-screensaver-asterwave                               \
+    kodi-screensaver-biogenesis                              \
+    kodi-screensaver-greynetic                               \
+    kodi-screensaver-matrixtrails                            \
+    kodi-screensaver-pingpong                                \
+    kodi-screensaver-pyro                                    \
+    kodi-screensaver-stars                                   \
     pulseaudio                                               \
     tzdata"                                               && \
                                                              \
