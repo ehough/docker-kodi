@@ -1,6 +1,6 @@
 # erichough/kodi
 
-Dockerized Kodi with audio and video.
+Dockerized [Kodi](https://kodi.tv/) with audio and video.
 
 ![Kodi screenshot](https://kodi.tv/sites/default/files/page/field_image/about--devices.jpg "Kodi screenshot")
 
