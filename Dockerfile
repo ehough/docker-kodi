@@ -3,7 +3,7 @@
 # https://github.com/ehough/docker-kodi
 # https://hub.docker.com/r/erichough/kodi/
 #
-# Copyright 2018-2019 - Eric Hough (eric@tubepress.com)
+# Copyright 2018-2020 - Eric Hough (eric@tubepress.com)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@ RUN apt-get update                                                        && \
 #  - kodi-peripheral-joystick     enables the use of gamepads, joysticks, game controllers, etc.
 #  - kodi-pvr-*                   PVR add-ons
 #  - kodi-screensaver-*           additional screensavers
+#  - locales                      additional spoken language support (via x11docker --lang option)
 #  - pulseaudio                   in case the user prefers PulseAudio instead of ALSA
 #  - tzdata                       necessary for timezone selection
 RUN packages="                                               \
@@ -93,6 +94,7 @@ RUN packages="                                               \
     kodi-screensaver-pingpong                                \
     kodi-screensaver-pyro                                    \
     kodi-screensaver-stars                                   \
+    locales                                                  \
     pulseaudio                                               \
     tzdata"                                               && \
                                                              \
