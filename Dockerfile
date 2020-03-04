@@ -89,6 +89,7 @@ RUN packages="                                               \
     kodi-screensaver-asteroids                               \
     kodi-screensaver-asterwave                               \
     kodi-screensaver-biogenesis                              \
+    kodi-screensaver-cpblobs                                 \
     kodi-screensaver-greynetic                               \
     kodi-screensaver-matrixtrails                            \
     kodi-screensaver-pingpong                                \

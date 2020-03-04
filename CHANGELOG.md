@@ -6,9 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [unreleased]
 
+### Changed
+
+* Bump to [Kodi 18.6](https://kodi.tv/article/kodi-leia-186-release)
+
 ### Added
 
-* Additional spoken language support via `locales` package
+* Additional spoken language support via `locales` package ([#33](https://github.com/ehough/docker-kodi/issues/30))
+* CpBlobs screensaver
 
 ## [2.4.0] - 2019-12-10
 
