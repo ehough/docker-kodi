@@ -34,7 +34,7 @@ RUN apt-get update                                                        && \
 #  - kodi-game-libretro           allows Kodi to utilize Libretro cores as game add-ons
 #  - kodi-game-libretro-*         Libretro cores
 #  - kodi-inputstream-*           input stream add-ons
-#  - kodi-peripheral-joystick     enables the use of gamepads, joysticks, game controllers, etc.
+#  - kodi-peripheral-*            enables the use of gamepads, joysticks, game controllers, etc.
 #  - kodi-pvr-*                   PVR add-ons
 #  - kodi-screensaver-*           additional screensavers
 #  - locales                      additional spoken language support (via x11docker --lang option)
@@ -43,7 +43,7 @@ RUN apt-get update                                                        && \
 RUN packages="                                               \
                                                              \
     ca-certificates                                          \
-    kodi=2:18.6+*                                            \
+    kodi=2:18.7+*                                            \
     kodi-eventclients-kodi-send                              \
     kodi-game-libretro                                       \
     kodi-game-libretro-beetle-pce-fast                       \
@@ -65,6 +65,7 @@ RUN packages="                                               \
     kodi-inputstream-adaptive                                \
     kodi-inputstream-rtmp                                    \
     kodi-peripheral-joystick                                 \
+    kodi-peripheral-xarcade                                  \
     kodi-pvr-argustv                                         \
     kodi-pvr-dvblink                                         \
     kodi-pvr-dvbviewer                                       \
