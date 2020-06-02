@@ -4,7 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [2.6.0] - 2020-06-02
+
+### Changed
+
+* Bump to [Kodi 18.7](https://kodi.tv/article/kodi-leia-187-release)
+
+### Added
+
+* Support for the [X-Arcade Tankstick](https://kodi.wiki/view/HOW-TO:X-Arcade_Tankstick_in_Kodi)
+
+## [2.5.0] - 2020-03-03
 
 ### Changed
 
