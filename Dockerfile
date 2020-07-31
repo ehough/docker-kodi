@@ -22,6 +22,9 @@ FROM ubuntu:bionic
 
 ARG KODI_VERSION=18.8
 
+# https://github.com/ehough/docker-nfs-server/pull/3#issuecomment-387880692
+ARG DEBIAN_FRONTEND=noninteractive
+
 # install the team-xbmc ppa
 RUN apt-get update                                                        && \
     apt-get install -y --no-install-recommends software-properties-common && \
