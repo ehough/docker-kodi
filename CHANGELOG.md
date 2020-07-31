@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.7.0] - 2020-07-30
+
+### Changed
+
+* Bump to [Kodi 18.8](https://kodi.tv/article/kodi-leia-188-release)
+
 ## [2.6.0] - 2020-06-02
 
 ### Changed
