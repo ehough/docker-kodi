@@ -20,7 +20,7 @@
 
 FROM ubuntu:bionic
 
-ARG KODI_VERSION=18.8
+ARG KODI_VERSION=18.9
 
 # https://github.com/ehough/docker-nfs-server/pull/3#issuecomment-387880692
 ARG DEBIAN_FRONTEND=noninteractive
@@ -103,6 +103,7 @@ RUN packages="                                               \
     kodi-screensaver-stars                                   \
     locales                                                  \
     pulseaudio                                               \
+    libnss3                                                  \
     tzdata"                                               && \
                                                              \
     apt-get update                                        && \
