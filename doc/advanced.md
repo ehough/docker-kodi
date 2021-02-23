@@ -2,20 +2,38 @@
 
 This page details available features that most users won't likely need.
 
+* [Custom add-ons](#custom-add-ons)
 * [Image Variants](#image-variants)
 * [Custom Startup Behavior](#custom-startup-behavior)
 * [Command-Line Shutdown](#command-line-shutdown)
 
 ---
 
+## Custom add-ons
+
+In an effort to control the size of this image, some optional Kodi add-ons (e.g. PVRs, audio formats, screensavers, games, and visualizations) are not bundled by default. If we included each add-on, the image would grow to over 1 GB in size and continue to expand over time.
+
+Since this image is based on Linux, add-ons will [need to be installed manually](https://kodi.wiki/view/Ubuntu_binary_add-ons). So how can you install the add-ons you need? Easily build your own custom image using the `KODI_EXTRA_PACKAGES` [build argument](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg). Its value is a space-separated list of additional packages that you'd like to install into the image.
+
+As an example, let's say that you want to run Kodi using this image, but you also want the [Pluto TV PVR add-on](https://kodi.wiki/view/Add-on:Pluto.TV) and a [Libretro core](https://kodi.wiki/view/Libretro) for [Atari](https://kodi.wiki/view/Game_add-ons#Libretro_cores). You could build a custom image using the command:
+
+```shell script
+docker build                                                        \
+         --build-arg="kodi-pvr-plutotv kodi-game-libretro-atari800" \
+         erichough/kodi
+```
+
+Add-on package names can be found [here](https://launchpad.net/~team-xbmc/+archive/ubuntu/ppa?field.series_filter=focal), and you can install *any* Ubuntu package that you'd like.
+
 ## Image Variants
 
 You can run an older version of Kodi, if you'd like to, by using the appropriate image tag.
 
-| tag    | Kodi
-|--------------|---------|
-| `latest`     | v18 "Leia" | 
-| `krypton`     | v17 "Krypton"
+| tag       | Kodi
+|-----------|--------------|
+| `latest`  | v19 "Matrix" | 
+| `leia`    | v18 "Leia"   | 
+| `krypton` | v17 "Krypton"
 
 ## Custom Startup Behavior
 

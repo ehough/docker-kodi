@@ -4,7 +4,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [2.8.0] - unreleased
+## [3.0.0] - 2021-02-22
+
+### Changed
+
+* Bump to [Kodi 19.0 "Matrix"](https://kodi.tv/article/kodi-190-matrix-release)
+* Bump to [Ubuntu 20.04 LTS "Focal Fossa"](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes)
+
+### Added
+
+* Ability to customize installation of Kodi add-on packages via new build argument: `KODI_EXTRA_PACKAGES`
+
+### Deprecated
+
+* This image will no longer bundle all known Kodi add-ons (screensavers, PVR add-ons, games, etc), and existing add-ons will be removed in version 4.0.0 of this image (with Kodi 20). Please use the `KODI_EXTRA_PACKAGES` feature instead.
+
+### Removed
+
+* Libretro core `fbalpha` as it is not available with Kodi 19
+
+## Fixed
+
+* Missing video acceleration libraries ([#17](https://github.com/ehough/docker-kodi/issues/17))
 
 ## Changed
 

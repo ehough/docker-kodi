@@ -83,9 +83,15 @@ You can also [terminate the container from the command line](doc/advanced.md#com
 
 The [advanced topics](doc/advanced.md) documentation describes a few more useful features and functionality:
 
+ * [Custom add-ons](doc/advanced.md#custom-add-ons)
  * [Image Variants](doc/advanced.md#image-variants)
  * [Custom Startup Behavior](doc/advanced.md#custom-startup-behavior)
  * [Command-Line Shutdown](doc/advanced.md#command-line-shutdown)
+
+## Help!
+
+Something not working quite right? Are you stuck? Please ask your questions in the
+[discussion group](https://github.com/ehough/docker-kodi/discussions), where we exchange help and share ideas.
 
 ## Contributing
 

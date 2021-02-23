@@ -5,7 +5,7 @@
 # https://github.com/ehough/docker-kodi
 # https://hub.docker.com/r/erichough/kodi/
 #
-# Copyright 2018-2020 - Eric Hough (eric@tubepress.com)
+# Copyright 2018-2021 - Eric Hough (eric@tubepress.com)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
