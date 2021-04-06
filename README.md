@@ -65,19 +65,21 @@ You can also [terminate the container from the command line](doc/advanced.md#com
 
 ### Example systemd Service Unit
 
-    [Unit]
-    Description=Dockerized Kodi
-    Requires=docker.service
-    After=network.target docker.service
-    
-    [Service]
-    ExecStartPre=/usr/bin/docker pull erichough/kodi
-    ExecStart=/usr/bin/x11docker ... erichough/kodi
-    Restart=always
-    KillMode=process
-    
-    [Install]
-    WantedBy=multi-user.target
+```ini
+[Unit]
+Description=Dockerized Kodi
+Requires=docker.service
+After=network.target docker.service
+
+[Service]
+ExecStartPre=/usr/bin/docker pull erichough/kodi
+ExecStart=/usr/bin/x11docker ... erichough/kodi
+Restart=always
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+```
 
 ## Advanced
 
