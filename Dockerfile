@@ -18,19 +18,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-FROM ubuntu:focal
+ARG UBUNTU_RELEASE=impish
+FROM ubuntu:$UBUNTU_RELEASE
 
-ARG KODI_VERSION=19.0
+ARG KODI_VERSION=19.3
 
 # https://github.com/ehough/docker-nfs-server/pull/3#issuecomment-387880692
 ARG DEBIAN_FRONTEND=noninteractive
 
 # install the team-xbmc ppa
-RUN apt-get update                                                        && \
-    apt-get install -y --no-install-recommends software-properties-common && \
-    add-apt-repository ppa:team-xbmc/ppa                                  && \
-    apt-get -y purge openssl software-properties-common                   && \
-    apt-get -y --purge autoremove                                         && \
+RUN apt-get update                                                                  && \
+    apt-get install -y --no-install-recommends gpg-agent software-properties-common && \
+    add-apt-repository ppa:team-xbmc/ppa                                            && \
+    apt-get -y purge openssl gpg-agent software-properties-common                   && \
+    apt-get -y --purge autoremove                                                   && \
     rm -rf /var/lib/apt/lists/*
 
 ARG KODI_EXTRA_PACKAGES=
@@ -51,7 +52,7 @@ ARG KODI_EXTRA_PACKAGES=
 RUN packages="                                               \
                                                              \
     ca-certificates                                          \
-    kodi=2:${KODI_VERSION}+*                                 \
+    kodi=6:${KODI_VERSION}+*                                 \
     kodi-eventclients-kodi-send                              \
     kodi-game-libretro                                       \
     kodi-game-libretro-beetle-pce-fast                       \
