@@ -1,0 +1,51 @@
+<advancedsettings>
+    <!-- Seeded by the entrypoint only when the file does not already exist in
+         /data/.kodi/userdata, so operator changes are never overwritten.
+
+         Local SQLite libraries on purpose: Kodi for Kodi-native playback with a
+         Jellyfin add-on wants its own database, not a shared MySQL one. -->
+    <services>
+        <airplay>false</airplay>
+        <devicename>kodi</devicename>
+        <!-- EventServer is OFF by default: it has no authentication at all
+             (TCP 9090 JSON-RPC-over-TCP and UDP 9777 remote input).  Enable it
+             only on a trusted LAN and never expose those ports further. -->
+        <esenabled>false</esenabled>
+        <esallinterfaces>false</esallinterfaces>
+        <esport>9777</esport>
+        <upnpannounce>false</upnpannounce>
+        <upnprenderer>false</upnprenderer>
+        <upnpserver>false</upnpserver>
+        <!-- The webserver (HTTP JSON-RPC + web UI) is the authenticated remote
+             control path.  SET A REAL PASSWORD, or set
+             webserverauthentication to false if the LAN is fully trusted. -->
+        <webserver>true</webserver>
+        <webserverport>8080</webserverport>
+        <webserverusername>kodi</webserverusername>
+        <webserverpassword>CHANGE-ME</webserverpassword>
+        <webserverauthentication>true</webserverauthentication>
+        <zeroconf>false</zeroconf>
+    </services>
+    <!-- Map the paths the media server reports to the paths as mounted here.
+         Example: Jellyfin exports /mnt/media while this container mounts the
+         same dataset read-only at /media. -->
+    <pathsubstitution>
+        <substitute><from>/mnt/media/</from><to>/media/</to></substitute>
+        <substitute><from>/mnt/recorded/</from><to>/recorded/</to></substitute>
+        <substitute><from>/mnt/tube_archivist/</from><to>/tube_archivist/</to></substitute>
+    </pathsubstitution>
+    <videolibrary>
+        <usefasthash>true</usefasthash>
+        <importwatchedstate>true</importwatchedstate>
+        <importresumepoint>true</importresumepoint>
+    </videolibrary>
+    <videoscanner>
+        <ignoreerrors>true</ignoreerrors>
+    </videoscanner>
+    <loglevel>0</loglevel>
+    <splash>false</splash>
+    <audiooutput>
+        <guisoundmode>0</guisoundmode>
+    </audiooutput>
+    <nodvdrom>true</nodvdrom>
+</advancedsettings>

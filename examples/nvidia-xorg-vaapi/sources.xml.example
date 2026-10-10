@@ -1,0 +1,56 @@
+<sources>
+    <programs>
+        <default pathversion="1"></default>
+    </programs>
+    <video>
+        <default pathversion="1"></default>
+        <source>
+            <name>Movies</name>
+            <path pathversion="1">/media/movies/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Shows</name>
+            <path pathversion="1">/media/shows/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>TV</name>
+            <path pathversion="1">/media/tv/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Films3D</name>
+            <path pathversion="1">/media/Films3D/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Divers</name>
+            <path pathversion="1">/media/divers/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Video</name>
+            <path pathversion="1">/media/video/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Enregistrements</name>
+            <path pathversion="1">/recorded/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>YouTube Archivist</name>
+            <path pathversion="1">/tube_archivist/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </video>
+    <music>
+        <default pathversion="1"></default>
+        <source>
+            <name>Musique</name>
+            <path pathversion="1">/media/musique/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </music>
+</sources>

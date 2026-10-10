@@ -88,6 +88,12 @@ The [advanced topics](doc/advanced.md) documentation describes a few more useful
  * [Custom Startup Behavior](doc/advanced.md#custom-startup-behavior)
  * [Command-Line Shutdown](doc/advanced.md#command-line-shutdown)
 
+## Headless / NVIDIA GPU example
+
+Kodi on a server or NAS whose NVIDIA GPU drives the TV - including hardware
+decoding of 10-bit HEVC/HDR through VAAPI/NVDEC - is covered in
+[`examples/nvidia-xorg-vaapi`](examples/nvidia-xorg-vaapi).
+
 ## Help!
 
 Something not working quite right? Are you stuck? Please ask your questions in the

@@ -1,0 +1,52 @@
+# Example: Kodi on the TV of a server/NAS that has an NVIDIA GPU passed through.
+#
+# Notes
+#  * `runtime: nvidia` + the deploy reservation give the container the GPU.
+#  * device_cgroup_rules is required for /dev/nvidia-modeset, which the
+#    entrypoint creates: the container has no permission to open it otherwise,
+#    and the NVIDIA X driver cannot set display modes without it.
+#  * /dev/tty0 and /dev/tty1 are needed because Xorg runs as root (the VT
+#    devices are 0620 root:tty).
+#  * media is mounted read-only; Kodi writes only to its own profile.
+#
+# Replace the /srv/... paths with your own.
+services:
+  kodi:
+    build: .
+    image: kodi-omega-nvidia:latest
+    container_name: kodi
+    init: true
+    restart: unless-stopped
+    runtime: nvidia
+    environment:
+      - TZ=Europe/Berlin
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - KODI_XORG_DISPLAY=:0
+    devices:
+      - /dev/dri/card1        # the GPU's DRM node that drives the display
+      - /dev/dri/renderD128   # render node (NVDEC / VAAPI)
+      - /dev/tty0
+      - /dev/tty1
+      - /dev/snd              # HDMI audio
+    device_cgroup_rules:
+      - "c 195:254 rwm"       # /dev/nvidia-modeset, created by the entrypoint
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu
+                - compute
+                - video
+                - graphics
+                - utility
+    volumes:
+      - /srv/kodi/data:/data
+      - /srv/media:/media:ro
+    ports:
+      - "8080:8080"           # web UI / JSON-RPC (password protected)
+      # - "9090:9090"         # EventServer JSON-RPC over TCP - NO authentication
+      # - "9777:9777/udp"     # EventServer remote input    - NO authentication

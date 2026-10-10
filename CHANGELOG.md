@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+* Example: [Kodi 21 on an NVIDIA GPU driving a TV](examples/nvidia-xorg-vaapi) -
+  Xorg on the GPU plus `nvidia-vaapi-driver`, which is what makes 10-bit HEVC
+  (HDR) hardware decoding possible (Kodi's VDPAU decoder has no Main10 profile).
+
 ## [3.0.0] - 2021-02-22
 
 ### Changed
